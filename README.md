@@ -25,8 +25,6 @@ require("@forsakringskassan/devindex-menu")([
 
 When execOnChange is set to a value, the global function with this name will be called on onChange of the dropdown list.
 
-For example usage see: http://stash.sfa.se/projects/EXP_TEMPL/repos/fia_sitevision_webapp_vue_bootstrapped_boilerplate/browse
-
 ## API
 
 ```js
