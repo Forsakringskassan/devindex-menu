@@ -64,10 +64,5 @@
   },
   "engines": {
     "node": ">= 16"
-  },
-  "renovate": {
-    "extends": [
-      "local>npm-packages/renovate-config-fk:lib"
-    ]
   }
 }
