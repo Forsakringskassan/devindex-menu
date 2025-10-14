@@ -37,9 +37,6 @@
   "commitlint": {
     "extends": "@forsakringskassan/commitlint-config/no-jira"
   },
-  "browserslist": [
-    "extends browserslist-config-fk"
-  ],
   "prettier": "@forsakringskassan/prettier-config",
   "release": {
     "extends": "@forsakringskassan/semantic-release-config"
@@ -57,7 +54,6 @@
     "@forsakringskassan/eslint-config-typescript-typeinfo": "13.1.0",
     "@forsakringskassan/prettier-config": "3.1.7",
     "@types/node": "16.11.65",
-    "browserslist-config-fk": "1.0.0",
     "cypress": "15.3.0",
     "esbuild": "0.24.2",
     "esbuild-sass-plugin": "3.3.1",
