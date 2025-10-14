@@ -67,6 +67,6 @@
     ]
   },
   "commitlint": {
-    "extends": "@forsakringskassan/commitlint-config/default"
+    "extends": "@forsakringskassan/commitlint-config/no-jira"
   }
 }
