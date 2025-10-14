@@ -54,6 +54,7 @@
     "@forsakringskassan/eslint-config-cypress": "^13.1.0",
     "@forsakringskassan/eslint-config-jest": "^13.1.0",
     "@forsakringskassan/eslint-config-typescript": "^13.1.0",
+    "@forsakringskassan/eslint-config-typescript-typeinfo": "13.1.0",
     "@forsakringskassan/prettier-config": "3.1.7",
     "@types/node": "16.11.65",
     "browserslist-config-fk": "1.0.0",
