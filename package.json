@@ -34,6 +34,9 @@
     "prettier:write": "prettier --write .",
     "test": "npm run prettier:check && npm run eslint"
   },
+  "commitlint": {
+    "extends": "@forsakringskassan/commitlint-config/no-jira"
+  },
   "browserslist": [
     "extends browserslist-config-fk"
   ],
@@ -65,8 +68,5 @@
     "extends": [
       "local>npm-packages/renovate-config-fk:lib"
     ]
-  },
-  "commitlint": {
-    "extends": "@forsakringskassan/commitlint-config/no-jira"
   }
 }
