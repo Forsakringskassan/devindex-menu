@@ -1,4 +1,4 @@
-import defaultConfig from "@forsakringskassan/eslint-config";
+import defaultConfig, { globals } from "@forsakringskassan/eslint-config";
 import cliConfig from "@forsakringskassan/eslint-config-cli";
 import cypressConfig from "@forsakringskassan/eslint-config-cypress";
 import jestConfig from "@forsakringskassan/eslint-config-jest";
@@ -12,44 +12,18 @@ export default [
 
     ...defaultConfig,
 
-    cliConfig({
-        files: ["*.{js,mjs,cjs}", "scripts/**/*.{js,ts,cjs,mjs}"],
-    }),
-
-    typescriptConfig({
-        files: ["**/*.ts"],
-    }),
-
-    jestConfig({
-        files: ["**/*.spec.[jt]s"],
-    }),
-
-    cypressConfig({
-        files: ["**/*.cy.[jt]s", "**/*.pageobject.[jt]s"],
-    }),
+    cliConfig(),
+    typescriptConfig(),
+    jestConfig(),
+    cypressConfig(),
 
     {
         name: "Browser environment for client code",
         files: ["src/**/*.js"],
         languageOptions: {
             globals: {
-                document: "readonly",
-                window: "readonly",
-                location: "readonly",
-                sessionStorage: "readonly",
-                localStorage: "readonly",
-                setTimeout: "readonly",
-                clearTimeout: "readonly",
-                setInterval: "readonly",
-                clearInterval: "readonly",
-                btoa: "readonly",
-                atob: "readonly",
-                fetch: "readonly",
-                console: "readonly",
+                ...globals.browser,
             },
-        },
-        rules: {
-            "no-console": "warn",
         },
     },
 
@@ -58,14 +32,6 @@ export default [
         files: ["src/client.js"],
         rules: {
             "no-console": "off",
-        },
-    },
-
-    {
-        name: "Project specific rules",
-        files: ["**/*.{js,mjs,ts}"],
-        rules: {
-            "max-depth": ["error", 4],
         },
     },
 
