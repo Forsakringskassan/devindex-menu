@@ -3,6 +3,7 @@ import cliConfig from "@forsakringskassan/eslint-config-cli";
 import cypressConfig from "@forsakringskassan/eslint-config-cypress";
 import jestConfig from "@forsakringskassan/eslint-config-jest";
 import typescriptConfig from "@forsakringskassan/eslint-config-typescript";
+import typeinfoConfig from "@forsakringskassan/eslint-config-typescript-typeinfo";
 
 export default [
     {
@@ -14,6 +15,9 @@ export default [
 
     cliConfig(),
     typescriptConfig(),
+    typeinfoConfig(import.meta.dirname, {
+        files: ["src/**/*.ts"],
+    }),
     jestConfig(),
     cypressConfig(),
 

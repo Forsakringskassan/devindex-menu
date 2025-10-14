@@ -1,6 +1,6 @@
 export class DevindexPageObject {
     public selector: string;
-    public el: () => Cypress.Chainable<JQuery<HTMLElement>>;
+    public el: () => Cypress.Chainable<JQuery>;
 
     public constructor() {
         this.selector = ".secret-menu";
