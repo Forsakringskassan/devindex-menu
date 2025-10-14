@@ -1,8 +1,8 @@
-import path from "path";
 import { readFile } from "fs/promises";
-import { sassPlugin } from "esbuild-sass-plugin";
+import path from "path";
 import babel from "@babel/core";
 import { build } from "esbuild";
+import { sassPlugin } from "esbuild-sass-plugin";
 
 const formats = ["cjs", "esm"];
 
@@ -12,7 +12,7 @@ for (const format of formats) {
         bundle: true,
         outdir: `dist/${format}`,
         platform: "browser",
-        format: format,
+        format,
         target: "es2020",
         plugins: [
             sassPlugin({

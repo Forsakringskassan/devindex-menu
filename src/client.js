@@ -63,13 +63,12 @@ function getCookie(cookieName) {
                 const sessionKey = element.id;
                 if (element.value) {
                     const value = atob(element.value);
-                    /* eslint-disable-next-line no-console -- expected to log */
+
                     console.log(
                         `Laddar sessionstorage ${sessionKey} med \n ${value}`,
                     );
                     sessionStorage.setItem(sessionKey, value);
                 } else {
-                    /* eslint-disable-next-line no-console -- expected to log */
                     console.log(`Tömmer sessionstorage`);
                     sessionStorage.removeItem(sessionKey);
                 }
@@ -102,7 +101,6 @@ function getCookie(cookieName) {
                 event.preventDefault();
                 window.location.href = event.target.getAttribute("href");
                 setTimeout(() => {
-                    /* eslint-disable-next-line no-console -- expected to log */
                     console.log("Reload after click on hash-link.");
                     location.reload();
                 }, "500");

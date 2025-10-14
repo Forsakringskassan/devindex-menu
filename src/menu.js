@@ -1,5 +1,5 @@
+import client from "./client.js?raw"; // Using raw-loader for inline content
 import styling from "./style.scss";
-import client from "./client.js?raw"; //eslint-disable-line import/extensions -- nyttjar raw-loader
 /**
  * @typedef {import("../../menu").SelectSettings} SelectSettings
  * @typedef {import("../../menu").LinkSettings} LinkSettings
@@ -134,7 +134,7 @@ function entryFromMock(mock) {
 
                 return {
                     title: entry.response.label ?? value,
-                    value: value,
+                    value,
                 };
             }),
         ],
