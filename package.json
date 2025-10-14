@@ -1,0 +1,72 @@
+{
+  "name": "@forsakringskassan/devindex-menu",
+  "version": "1.9.0",
+  "description": "",
+  "license": "ISC",
+  "author": "FK",
+  "exports": {
+    ".": {
+      "types": "./menu.d.ts",
+      "require": "./dist/cjs/menu.js",
+      "import": "./dist/esm/menu.js"
+    },
+    "./pageobjects": {
+      "types": "./pageobjects.d.ts",
+      "require": "./dist/cjs/pageobjects/pageobjects.js",
+      "import": "./dist/esm/pageobjects/pageobjects.js"
+    }
+  },
+  "main": "dist/cjs/menu.js",
+  "module": "dist/esm/menu.js",
+  "types": "./menu.d.ts",
+  "files": [
+    "dist",
+    "pageobjects",
+    "./pageobjects.d.ts",
+    "./pageobjects.js",
+    "./menu.d.ts"
+  ],
+  "scripts": {
+    "prebuild": "rimraf dist && tsc --emitDeclarationOnly",
+    "build": "node generate.mjs",
+    "eslint": "eslint --cache .",
+    "prettier:check": "prettier --check .",
+    "prettier:write": "prettier --write .",
+    "test": "npm run prettier:check && npm run eslint"
+  },
+  "browserslist": [
+    "extends browserslist-config-fk"
+  ],
+  "prettier": "@forsakringskassan/prettier-config",
+  "release": {
+    "extends": "@forsakringskassan/semantic-release-config"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.14.3",
+    "@babel/preset-env": "^7.14.2",
+    "@forsakringskassan/apimock-express": "^2.9.0",
+    "@forsakringskassan/commitlint-config": "^3.1.2",
+    "@forsakringskassan/eslint-config": "^13.1.0",
+    "@forsakringskassan/eslint-config-cli": "^13.1.0",
+    "@forsakringskassan/eslint-config-cypress": "^13.1.0",
+    "@forsakringskassan/eslint-config-jest": "^13.1.0",
+    "@forsakringskassan/eslint-config-typescript": "^13.1.0",
+    "@forsakringskassan/prettier-config": "^3.1.7",
+    "@types/node": "16.11.65",
+    "browserslist-config-fk": "^1.0.0",
+    "cypress": "15.3.0",
+    "esbuild": "0.24.2",
+    "esbuild-sass-plugin": "3.3.1",
+    "rimraf": "3.0.2",
+    "sass": "^1.32.11",
+    "typescript": "4.8.4"
+  },
+  "renovate": {
+    "extends": [
+      "local>npm-packages/renovate-config-fk:lib"
+    ]
+  },
+  "commitlint": {
+    "extends": "@forsakringskassan/commitlint-config/default"
+  }
+}

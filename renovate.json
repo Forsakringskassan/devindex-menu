@@ -1,0 +1,4 @@
+{
+    "extends": ["local>forsakringskassan/renovate-config"],
+    "ignoreDeps": ["@openapitools/openapi-generator-cli"]
+}
