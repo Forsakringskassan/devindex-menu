@@ -1,0 +1,16 @@
+{
+    "compilerOptions": {
+        "allowJs": true,
+        "target": "es2017",
+        "module": "commonjs",
+        "declaration": true,
+        "checkJs": false,
+        "outDir": "./dist",
+        "strict": true,
+        "types": ["cypress", "node"],
+        "moduleResolution": "node",
+        "allowSyntheticDefaultImports": true,
+        "baseUrl": "."
+    },
+    "include": ["src/pageobjects/*.ts"]
+}
