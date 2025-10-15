@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## [1.10.0](https://github.com/Forsakringskassan/devindex-menu/compare/v1.9.0...v1.10.0) (2025-10-15)
+
+### Features
+
+* triggering new version for GitHub ([489fb1d](https://github.com/Forsakringskassan/devindex-menu/commit/489fb1d363600e6b6d89bcc96ad89bb819d5b4fb))
+
 ## 1.0.0 (2025-10-15)
 
 ### Features
