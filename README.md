@@ -1,5 +1,8 @@
 # @forsakringskassan/devindex-menu
 
+![Closed](docs/closed.png)
+![Opened](docs/opened.png)
+
 > npm install --save-dev @forsakringskassan/devindex-menu
 
 Menu for development mode that can be used with advantage together with [fapimock-express](https://www.npmjs.com/package/@forsakringskassan/apimock-express).
