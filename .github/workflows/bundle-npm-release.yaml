@@ -10,3 +10,4 @@ jobs:
         uses: Forsakringskassan/.github/.github/workflows/bundle-npm-release.yaml@main
         secrets:
             NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+            RELEASE_APP_KEY: ${{ secrets.RELEASE_APP_KEY }}
