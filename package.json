@@ -55,7 +55,7 @@
     "@forsakringskassan/prettier-config": "3.1.7",
     "@tsconfig/node16": "16.1.6",
     "@types/node": "16.18.126",
-    "cypress": "15.4.0",
+    "cypress": "15.5.0",
     "esbuild": "0.25.11",
     "esbuild-sass-plugin": "3.3.1",
     "rimraf": "6.0.1",
