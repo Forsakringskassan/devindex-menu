@@ -42,8 +42,8 @@
     "extends": "@forsakringskassan/semantic-release-config"
   },
   "devDependencies": {
-    "@babel/core": "7.28.4",
-    "@babel/preset-env": "7.28.3",
+    "@babel/core": "7.28.5",
+    "@babel/preset-env": "7.28.5",
     "@forsakringskassan/apimock-express": "2.10.1",
     "@forsakringskassan/commitlint-config": "3.2.0",
     "@forsakringskassan/eslint-config": "13.1.4",
