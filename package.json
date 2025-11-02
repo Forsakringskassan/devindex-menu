@@ -58,7 +58,7 @@
     "cypress": "15.5.0",
     "esbuild": "0.25.11",
     "esbuild-sass-plugin": "3.3.1",
-    "rimraf": "6.0.1",
+    "rimraf": "6.1.0",
     "sass": "1.93.2",
     "typescript": "5.9.3"
   },
