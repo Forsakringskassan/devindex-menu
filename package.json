@@ -59,7 +59,7 @@
     "esbuild": "0.27.0",
     "esbuild-sass-plugin": "3.3.1",
     "rimraf": "6.1.2",
-    "sass": "1.94.1",
+    "sass": "1.94.2",
     "typescript": "5.9.3"
   },
   "engines": {
