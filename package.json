@@ -45,7 +45,7 @@
     "@babel/core": "7.28.5",
     "@babel/preset-env": "7.28.5",
     "@forsakringskassan/apimock-express": "2.12.0",
-    "@forsakringskassan/commitlint-config": "3.2.1",
+    "@forsakringskassan/commitlint-config": "3.3.0",
     "@forsakringskassan/eslint-config": "13.2.4",
     "@forsakringskassan/eslint-config-cli": "13.2.0",
     "@forsakringskassan/eslint-config-cypress": "13.2.3",
