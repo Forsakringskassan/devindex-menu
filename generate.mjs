@@ -1,14 +1,17 @@
 import { readFile } from "fs/promises";
+import fs from "node:fs";
 import path from "path";
 import babel from "@babel/core";
 import { build } from "esbuild";
 import { sassPlugin } from "esbuild-sass-plugin";
 
+fs.rmdirSync("./dist", { recursive: true });
+
 const formats = ["cjs", "esm"];
 
 for (const format of formats) {
     await build({
-        entryPoints: ["./src/menu.js", "src/pageobjects/pageobjects.ts"],
+        entryPoints: ["./src/menu.ts", "src/pageobjects/pageobjects.ts"],
         bundle: true,
         outdir: `dist/${format}`,
         platform: "browser",

@@ -1,13 +1,13 @@
 {
-    "extends": "@tsconfig/node16",
+    "extends": "@tsconfig/node22",
     "compilerOptions": {
-        "target": "es2017",
-        "module": "commonjs",
-        "emitDeclarationOnly": true,
+        "target": "es2022",
         "declaration": true,
+        "declarationDir": "temp/types",
         "outDir": "./dist",
         "types": ["cypress", "node"],
-        "moduleResolution": "node"
+        "lib": ["dom"],
+        "allowJs": true
     },
-    "include": ["src/pageobjects/*.ts"]
+    "include": ["src/**/*.ts"]
 }

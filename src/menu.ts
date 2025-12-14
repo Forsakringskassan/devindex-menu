@@ -1,18 +1,70 @@
+/* eslint-disable @typescript-eslint/prefer-nullish-coalescing -- Technical debt */
+/* eslint-disable @typescript-eslint/restrict-template-expressions -- Technical debt */
+/* eslint-disable @typescript-eslint/no-unsafe-assignment  -- Technical debt */
+
+import {
+    type Mock,
+    type MockMatcher,
+    type MockResponse,
+    type StaticMockResponse,
+} from "@forsakringskassan/apimock-express";
+
 import client from "./client.js?raw"; // Using raw-loader for inline content
 import styling from "./style.scss";
-/**
- * @typedef {import("../../menu").SelectSettings} SelectSettings
- * @typedef {import("../../menu").LinkSettings} LinkSettings
- * @typedef {import("../../menu").Settings} Settings
- * @typedef {import("@forsakringskassan/apimock-express/mockfile").Mock} Mock
- * @typedef {import("@forsakringskassan/apimock-express/mockfile").MockMatcher} MockMatcher
- */
+
+export interface SelectOption {
+    title: string;
+    value: unknown;
+}
+
+export interface SelectSettings {
+    type: "select";
+    key: string;
+    title: string;
+    reloadOnChange?: boolean;
+    execOnChange?: string;
+    description?: string;
+    sessionStorage?: boolean;
+    options: SelectOption[];
+}
+
+export interface LinkOption {
+    title: string;
+    href: string;
+}
+
+export interface LinkSettings {
+    type: "links";
+    title: string;
+    description?: string;
+    options: LinkOption[];
+}
+
+export interface TextSettings {
+    type: "text";
+    key: string;
+    title: string;
+    description?: string;
+    options: LinkOption[];
+}
+
+export type Settings = SelectSettings | LinkSettings | TextSettings;
+
+function evaluateMock<T>(mock: MockResponse<T>): StaticMockResponse<T> {
+    /* if the mock is a `DynamicMockResponse` evaluate the function */
+    if (typeof mock === "function") {
+        const req = {};
+        return mock(req);
+    } else {
+        return mock;
+    }
+}
 
 /**
- * @param {SelectSettings} setting
- * @returns {string}
+ * @param settings - The setting to generate markup for.
+ * @returns Returns the generated markup as a string.
  */
-function generateOptionMarkupForSelect(setting) {
+function generateOptionMarkupForSelect(setting: SelectSettings): string {
     const reload =
         setting.reloadOnChange !== undefined ? setting.reloadOnChange : true;
     const description = setting.description
@@ -37,10 +89,10 @@ function generateOptionMarkupForSelect(setting) {
 }
 
 /**
- * @param {LinkSettings} setting
- * @returns {string}
+ * @param LinkSettings - The setting to generate markup for.
+ * @returns Returns the generated markup as a string.
  */
-function generateOptionMarkupForLink(setting) {
+function generateOptionMarkupForLink(setting: LinkSettings): string {
     const description = setting.description
         ? `<p>${setting.description}</p>`
         : "";
@@ -54,10 +106,10 @@ function generateOptionMarkupForLink(setting) {
 }
 
 /**
- * @param {Settings} setting
- * @returns {string}
+ * @param textSettings - The setting to generate markup for.
+ * @returns Returns the generated markup as a string.
  */
-function generateOptionMarkupForTextInput(setting) {
+function generateOptionMarkupForTextInput(setting: TextSettings): string {
     const description = setting.description
         ? `<p>${setting.description}</p>`
         : "";
@@ -66,10 +118,10 @@ function generateOptionMarkupForTextInput(setting) {
 }
 
 /**
- * @param {Settings} setting
- * @returns {string}
+ * @param setting - The setting to generate markup for.
+ * @returns Returns the generated markup as a string.
  */
-function generateOptionMarkup(setting) {
+function generateOptionMarkup(setting: Settings): string {
     switch (setting.type) {
         case "select":
             return generateOptionMarkupForSelect(setting);
@@ -85,10 +137,12 @@ function generateOptionMarkup(setting) {
  * Determines if an object that is either a {@link Mock} or {@link Settings}, in
  * fact is {@link Mock}.
  *
- * @param {Settings | Mock} userSettingsOrMock
- * @returns {userSettingsOrMock is Mock}
+ * @param userSettingsOrMock - settings or mock to check
+ * @returns True if the object is a {@link Mock}, false otherwise.
  */
-function isMock(userSettingsOrMock) {
+function isMock(
+    userSettingsOrMock: Settings | Mock,
+): userSettingsOrMock is Mock {
     return (
         "responses" in userSettingsOrMock ||
         "defaultResponse" in userSettingsOrMock
@@ -98,12 +152,12 @@ function isMock(userSettingsOrMock) {
 /**
  * Get the first cookie from a mock matcher.
  *
- * @param {MockMatcher} matcher The mock matcher to search.
- * @returns {{ key: string; value: string; }} An object with a `key` and `value`
+ * @param matcher -The mock matcher to search.
+ * @returns An object with a `key` and `value`
  * corresponding to the first cookie found in the matcher.
  */
-function getFirstCookie(matcher) {
-    const entries = Object.entries(matcher.request.cookies);
+function getFirstCookie(matcher: MockMatcher): { key: string; value: string } {
+    const entries = Object.entries(matcher.request.cookies || {});
     const [key, value] = entries[0];
     return { key, value };
 }
@@ -112,14 +166,19 @@ function getFirstCookie(matcher) {
  * Generate a devindex entry directly from a mock, by utilising the `meta.title`
  * and `responses[i].response.label` properties to get humanly readable strings.
  *
- * @param {Mock} mock The mock to get an entry from.
- * @returns {Settings} The entry generated from this mock.
+ * @param mock - The mock to get an entry from.
+ * @returns The entry generated from this mock.
  */
-function entryFromMock(mock) {
+function entryFromMock(mock: Mock): Settings {
+    if (!mock.responses || mock.responses.length === 0) {
+        throw new Error(
+            "Mock must have at least one response to generate entry from.",
+        );
+    }
     const { key } = getFirstCookie(mock.responses[0]);
-    const title = mock.meta.title ?? key;
+    const title = mock.meta?.title ?? key;
     const defaultEntry = {
-        title: mock.defaultResponse?.label ?? "Default",
+        title: evaluateMock(mock.defaultResponse).label ?? "Default",
         value: "default",
     };
 
@@ -133,7 +192,7 @@ function entryFromMock(mock) {
                 const { value } = getFirstCookie(entry);
 
                 return {
-                    title: entry.response.label ?? value,
+                    title: evaluateMock(entry.response).label ?? value,
                     value,
                 };
             }),
@@ -146,10 +205,9 @@ const defaultSetting = {
 };
 
 /**
- * @param {(Settings | Mock)[]} userSettingsAndMocks
- * @returns {void}
+ * @param userSettingsAndMocks - An array of user settings and/or mocks to generate the menu from.
  */
-export default (userSettingsAndMocks) => {
+export default (userSettingsAndMocks: Array<Settings | Mock>): void => {
     let settingsMarkup = "";
     userSettingsAndMocks
         .map((userSettingOrMock) =>
@@ -158,7 +216,7 @@ export default (userSettingsAndMocks) => {
                 : userSettingOrMock,
         )
         .forEach((userSetting) => {
-            const setting = { ...defaultSetting, ...userSetting };
+            const setting: Settings = { ...defaultSetting, ...userSetting };
             settingsMarkup = settingsMarkup + generateOptionMarkup(setting);
         });
 

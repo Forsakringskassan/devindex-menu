@@ -8,7 +8,12 @@ import typeinfoConfig from "@forsakringskassan/eslint-config-typescript-typeinfo
 export default [
     {
         name: "Ignored files",
-        ignores: ["**/coverage/**", "**/dist/**", "**/node_modules/**"],
+        ignores: [
+            "**/coverage/**",
+            "**/dist/**",
+            "**/temp/**",
+            "**/node_modules/**",
+        ],
     },
 
     ...defaultConfig,
