@@ -1,0 +1,21 @@
+name: Release
+concurrency: release-${{ github.ref }}
+
+on:
+    workflow_dispatch:
+    schedule:
+        - cron: "0 0 * * 5"
+
+permissions:
+    contents: write
+    issues: write
+    pull-requests: write
+    id-token: write
+
+jobs:
+    release:
+        uses: Forsakringskassan/.github/.github/workflows/npm-release.yaml@main
+        with:
+            app-id: ${{ vars.RELEASE_APP_ID }}
+        secrets:
+            app-key: ${{ secrets.RELEASE_APP_KEY }}
