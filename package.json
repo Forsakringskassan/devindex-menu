@@ -6,12 +6,12 @@
   "author": "FK",
   "exports": {
     ".": {
-      "types": "./menu.d.ts",
+      "types": "./dist/types/menu.d.ts",
       "require": "./dist/cjs/menu.js",
       "import": "./dist/esm/menu.js"
     },
     "./pageobjects": {
-      "types": "./pageobjects.d.ts",
+      "types": "./dist/types/pageobjects.d.ts",
       "require": "./dist/cjs/pageobjects/pageobjects.js",
       "import": "./dist/esm/pageobjects/pageobjects.js"
     }
@@ -20,15 +20,14 @@
   "module": "dist/esm/menu.js",
   "types": "./menu.d.ts",
   "files": [
-    "dist",
-    "pageobjects",
-    "./pageobjects.d.ts",
-    "./pageobjects.js",
-    "./menu.d.ts"
+    "dist"
   ],
   "scripts": {
-    "prebuild": "rimraf dist && tsc",
+    "prebuild": "tsc",
     "build": "node generate.mjs",
+    "postbuild": "npm run types:main && npm run types:pageobject",
+    "types:main": "dts-bundle-generator -o dist/types/index.d.ts temp/types/menu.d.ts",
+    "types:pageobject": "dts-bundle-generator -o dist/types/pageobjects.d.ts temp/types/pageobjects/pageobjects.d.ts",
     "eslint": "eslint --cache .",
     "prettier:check": "prettier --check .",
     "prettier:write": "prettier --write .",
@@ -53,16 +52,16 @@
     "@forsakringskassan/eslint-config-typescript": "13.2.5",
     "@forsakringskassan/eslint-config-typescript-typeinfo": "13.2.5",
     "@forsakringskassan/prettier-config": "3.3.1",
-    "@tsconfig/node16": "16.1.8",
+    "@tsconfig/node22": "22.0.5",
     "@types/node": "16.18.126",
     "cypress": "15.7.1",
+    "dts-bundle-generator": "9.5.1",
     "esbuild": "0.27.1",
     "esbuild-sass-plugin": "3.3.1",
-    "rimraf": "6.1.2",
     "sass": "1.96.0",
     "typescript": "5.9.3"
   },
   "engines": {
-    "node": ">= 16"
+    "node": ">= 22.0.0"
   }
 }

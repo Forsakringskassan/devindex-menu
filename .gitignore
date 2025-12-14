@@ -1,3 +1,4 @@
+temp/
 .eslintcache
 node_modules
 *.tgz
