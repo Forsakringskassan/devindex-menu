@@ -1,0 +1,8 @@
+{
+    "extends": ["@fkui/tsconfig/recommended", "@fkui/tsconfig/cypress"],
+    "compilerOptions": {
+        "types": ["cypress", "node"],
+        "rootDir": "../src/"
+    },
+    "include": ["**/*.ts"]
+}

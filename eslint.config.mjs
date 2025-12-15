@@ -12,6 +12,7 @@ export default [
             "**/coverage/**",
             "**/dist/**",
             "**/temp/**",
+            "**/public/**",
             "**/node_modules/**",
         ],
     },

@@ -24,14 +24,15 @@
   ],
   "scripts": {
     "prebuild": "tsc",
-    "build": "node generate.mjs",
+    "build": "node ./scripts/generate.mjs",
     "postbuild": "npm run types:main && npm run types:pageobject",
     "types:main": "dts-bundle-generator -o dist/types/index.d.ts temp/types/menu.d.ts",
     "types:pageobject": "dts-bundle-generator -o dist/types/pageobjects.d.ts temp/types/pageobjects.d.ts",
     "eslint": "eslint --cache .",
     "prettier:check": "prettier --check .",
     "prettier:write": "prettier --write .",
-    "test": "npm run prettier:check && npm run eslint"
+    "test": "npm run prettier:check && npm run eslint",
+    "start": "node ./scripts/serve.mjs"
   },
   "commitlint": {
     "extends": "@forsakringskassan/commitlint-config/no-jira"
@@ -43,6 +44,7 @@
   "devDependencies": {
     "@babel/core": "7.28.5",
     "@babel/preset-env": "7.28.5",
+    "@fkui/tsconfig": "6.31.0",
     "@forsakringskassan/apimock-express": "2.12.0",
     "@forsakringskassan/commitlint-config": "3.3.1",
     "@forsakringskassan/eslint-config": "13.2.4",
