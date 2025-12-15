@@ -1,31 +1,8 @@
-import { readFile, rm } from "fs/promises";
+import { readFile } from "fs/promises";
 import path from "path";
 import babel from "@babel/core";
-import { build } from "esbuild";
-import { sassPlugin } from "esbuild-sass-plugin";
 
-await rm("./dist", { force: true, recursive: true });
-
-const formats = ["cjs", "esm"];
-
-for (const format of formats) {
-    await build({
-        entryPoints: ["./src/menu.ts", "src/pageobjects.ts"],
-        bundle: true,
-        outdir: `dist/${format}`,
-        platform: "browser",
-        format,
-        target: "es2020",
-        plugins: [
-            sassPlugin({
-                type: "css-text",
-            }),
-            rawPlugin(),
-        ],
-    });
-}
-
-function rawPlugin() {
+export function rawPlugin() {
     return {
         name: "raw",
         setup(build) {
