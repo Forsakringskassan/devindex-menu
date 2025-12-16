@@ -12,8 +12,8 @@
     },
     "./pageobjects": {
       "types": "./dist/types/pageobjects.d.ts",
-      "require": "./dist/cjs/pageobjects/pageobjects.js",
-      "import": "./dist/esm/pageobjects/pageobjects.js"
+      "require": "./dist/cjs/pageobjects.js",
+      "import": "./dist/esm/pageobjects.js"
     }
   },
   "main": "dist/cjs/menu.js",
@@ -27,7 +27,7 @@
     "build": "node generate.mjs",
     "postbuild": "npm run types:main && npm run types:pageobject",
     "types:main": "dts-bundle-generator -o dist/types/index.d.ts temp/types/menu.d.ts",
-    "types:pageobject": "dts-bundle-generator -o dist/types/pageobjects.d.ts temp/types/pageobjects/pageobjects.d.ts",
+    "types:pageobject": "dts-bundle-generator -o dist/types/pageobjects.d.ts temp/types/pageobjects.d.ts",
     "eslint": "eslint --cache .",
     "prettier:check": "prettier --check .",
     "prettier:write": "prettier --write .",

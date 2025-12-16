@@ -11,7 +11,7 @@ const formats = ["cjs", "esm"];
 
 for (const format of formats) {
     await build({
-        entryPoints: ["./src/menu.ts", "src/pageobjects/pageobjects.ts"],
+        entryPoints: ["./src/menu.ts", "src/pageobjects.ts"],
         bundle: true,
         outdir: `dist/${format}`,
         platform: "browser",
