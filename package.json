@@ -53,7 +53,7 @@
     "@forsakringskassan/eslint-config-typescript-typeinfo": "13.2.5",
     "@forsakringskassan/prettier-config": "3.3.1",
     "@tsconfig/node22": "22.0.5",
-    "@types/node": "16.18.126",
+    "@types/node": "22.19.3",
     "cypress": "15.7.1",
     "dts-bundle-generator": "9.5.1",
     "esbuild": "0.27.1",
