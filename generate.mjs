@@ -1,11 +1,10 @@
-import { readFile } from "fs/promises";
-import fs from "node:fs";
+import { readFile, rm } from "fs/promises";
 import path from "path";
 import babel from "@babel/core";
 import { build } from "esbuild";
 import { sassPlugin } from "esbuild-sass-plugin";
 
-fs.rmdirSync("./dist", { recursive: true });
+await rm("./dist", { force: true, recursive: true });
 
 const formats = ["cjs", "esm"];
 
