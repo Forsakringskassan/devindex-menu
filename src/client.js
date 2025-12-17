@@ -31,6 +31,21 @@ function getCookie(cookieName) {
     return undefined;
 }
 
+function deleteCookie(name) {
+    document.cookie = `${name}=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT;`;
+}
+
+/* eslint-disable-next-line no-unused-vars -- Used in generated code. */
+function activateScenario(cookies, removeCookies = []) {
+    for (const [key, value] of Object.entries(cookies)) {
+        setCookie(key, value, 30);
+    }
+    for (const cookieName of removeCookies) {
+        deleteCookie(cookieName);
+    }
+    location.reload(true);
+}
+
 (function () {
     /** @type {NodeListOf<HTMLSelectElement>} */
     const selections = document.querySelectorAll(".secret-menu select");
