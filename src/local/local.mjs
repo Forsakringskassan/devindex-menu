@@ -11,6 +11,17 @@ menu([
             { title: "Slow loading", value: true },
         ],
     },
+    {
+        key: "scenario1",
+        type: "scenario",
+        title: "Scenario 1",
+        description: "A dummy scenario for testing.",
+        cookies: {
+            a: "b",
+            foo: "bar",
+        },
+        removeCookies: ["slow-load"],
+    },
 ]);
 
 const getCookies = function () {

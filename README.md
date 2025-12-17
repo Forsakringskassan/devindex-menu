@@ -110,6 +110,20 @@ Inside the application, the mock is then sent directly to `devindexMenu`.
 
 ```
 
+#### Scenario
+
+```typescript
+{
+    type: "scenario";
+    key: string;
+    title: string;
+    description?: string;
+    cookies: Record<string, string>;
+    removeCookies?: string[];
+ },
+
+```
+
 #### SessionStorage - Pre-filling
 
 If you specify `sessionStorage` as `true`, the value will be saved under `key` in `sessionStorage`.

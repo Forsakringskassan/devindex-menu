@@ -48,7 +48,20 @@ export interface TextSettings {
     options: LinkOption[];
 }
 
-export type Settings = SelectSettings | LinkSettings | TextSettings;
+export interface ScenarioSetting {
+    type: "scenario";
+    key: string;
+    title: string;
+    description?: string;
+    cookies: Record<string, string>;
+    removeCookies?: string[];
+}
+
+export type Settings =
+    | SelectSettings
+    | LinkSettings
+    | TextSettings
+    | ScenarioSetting;
 
 function evaluateMock<T>(mock: MockResponse<T>): StaticMockResponse<T> {
     /* if the mock is a `DynamicMockResponse` evaluate the function */
@@ -117,6 +130,20 @@ function generateOptionMarkupForTextInput(setting: TextSettings): string {
     return `${setting.title} ${description} <br /> <input name="${setting.key}"  type="text"></input>`;
 }
 
+function generateOptionMarkupForScenario(setting: ScenarioSetting): string {
+    const description = setting.description
+        ? `<p>${setting.description}</p>`
+        : "";
+
+    return `
+        ${setting.title}
+        ${description}
+        <button id="${setting.key}" type="button" onclick='activateScenario(${JSON.stringify(setting.cookies)}, ${JSON.stringify(setting.removeCookies)})'>
+            Activate scenario
+        </button>
+    `;
+}
+
 /**
  * @param setting - The setting to generate markup for.
  * @returns Returns the generated markup as a string.
@@ -129,6 +156,8 @@ function generateOptionMarkup(setting: Settings): string {
             return generateOptionMarkupForLink(setting);
         case "text":
             return generateOptionMarkupForTextInput(setting);
+        case "scenario":
+            return generateOptionMarkupForScenario(setting);
     }
     return "";
 }
