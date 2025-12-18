@@ -77,17 +77,6 @@ function getCookie(cookieName) {
         };
     }
 
-    const inputFields = document.querySelectorAll(".secret-menu input");
-    for (let i = 0; i < inputFields.length; i++) {
-        const input = inputFields[i];
-        input.value = getCookie(input.name) ? getCookie(input.name) : "";
-
-        input.oninput = function (event) {
-            const element = event.target;
-            setCookie(element.name, element.value, 30);
-        };
-    }
-
     /* Forcerar att sidan laddas om, även när länken är av typen: /#/granska/8 */
     /** @type {NodeListOf<HTMLAnchorElement>} */
     const links = document.querySelectorAll(".secret-menu ul li a");

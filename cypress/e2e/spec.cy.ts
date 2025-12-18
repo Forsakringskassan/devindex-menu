@@ -39,7 +39,7 @@ describe("devindex", () => {
             pageobject.toggleMenu();
             cy.getCookie("custom-text").should("not.exist");
 
-            const testValue = "Hello, DevIndex!";
+            const testValue = "Hello";
             pageobject.textField("custom-text", testValue);
             cy.getCookie("custom-text").should(
                 "have.property",
