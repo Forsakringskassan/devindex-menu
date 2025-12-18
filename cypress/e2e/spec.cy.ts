@@ -22,4 +22,20 @@ describe("devindex", () => {
         pageobject.valj("slow-load", "true");
         cy.getCookie("slow-load").should("have.property", "value", "true");
     });
+
+    describe("text field", () => {
+        it("should be able to input text", () => {
+            cy.visit("/");
+            pageobject.toggleMenu();
+            cy.getCookie("custom-text").should("not.exist");
+
+            const testValue = "Hello, DevIndex!";
+            pageobject.textField("custom-text", testValue);
+            cy.getCookie("custom-text").should(
+                "have.property",
+                "value",
+                testValue,
+            );
+        });
+    });
 });
