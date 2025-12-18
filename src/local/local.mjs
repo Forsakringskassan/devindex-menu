@@ -11,6 +11,12 @@ menu([
             { title: "Slow loading", value: true },
         ],
     },
+    {
+        key: "custom-text",
+        title: "Text field",
+        description: "Input field for text.",
+        type: "text",
+    },
 ]);
 
 const getCookies = function () {
@@ -23,8 +29,12 @@ const getCookies = function () {
     return cookies;
 };
 
-document.getElementById("cookies").innerHTML = JSON.stringify(
-    getCookies(),
-    null,
-    2,
-);
+const updateCookiesDisplay = () => {
+    const cookiesElement = document.getElementById("cookies");
+    if (cookiesElement) {
+        cookiesElement.innerHTML = JSON.stringify(getCookies(), null, 2);
+    }
+};
+
+updateCookiesDisplay();
+setInterval(updateCookiesDisplay, 2000);
