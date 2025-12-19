@@ -31,6 +31,22 @@ describe("devindex", () => {
             pageobject.valj("exec-logic", "true");
             cy.url().should("include", "#function-called");
         });
+
+        it("should be to store objects in session storage", () => {
+            cy.visit("/");
+            pageobject.toggleMenu();
+
+            cy.get(`#option-session`).select(1);
+
+            cy.window().then((win) => {
+                const actual = JSON.parse(
+                    win.sessionStorage.getItem("option-session") ?? "{}",
+                );
+                expect(actual).to.deep.equal({
+                    bar: "foo",
+                });
+            });
+        });
     });
 
     describe("text field", () => {
