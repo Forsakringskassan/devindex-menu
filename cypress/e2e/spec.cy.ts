@@ -14,13 +14,23 @@ describe("devindex", () => {
         pageobject.el().should("be.visible");
     });
 
-    it("should be able to select value in select", () => {
-        cy.visit("/");
-        pageobject.toggleMenu();
-        cy.getCookie("slow-load").should("not.exist");
+    describe("select field", () => {
+        it("should be able to select value in select", () => {
+            cy.visit("/");
+            pageobject.toggleMenu();
+            cy.getCookie("slow-load").should("not.exist");
 
-        pageobject.valj("slow-load", "true");
-        cy.getCookie("slow-load").should("have.property", "value", "true");
+            pageobject.valj("slow-load", "true");
+            cy.getCookie("slow-load").should("have.property", "value", "true");
+        });
+
+        it("should be able to execute function when changing select", () => {
+            cy.visit("/");
+            pageobject.toggleMenu();
+            cy.url().should("not.include", "#function-called");
+            pageobject.valj("exec-logic", "true");
+            cy.url().should("include", "#function-called");
+        });
     });
 
     describe("text field", () => {

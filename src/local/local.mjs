@@ -1,5 +1,9 @@
-/* global document */
+/* global document, window, location */
 import menu from "../menu.ts";
+
+window.callFunction = function () {
+    location.replace("#function-called");
+};
 
 menu([
     {
@@ -9,6 +13,16 @@ menu([
         options: [
             { title: "Normal loading", value: false },
             { title: "Slow loading", value: true },
+        ],
+    },
+    {
+        key: "exec-logic",
+        title: "Menu with function call",
+        execOnChange: "callFunction",
+        reloadOnChange: false,
+        options: [
+            { title: "Option A", value: false },
+            { title: "Option B", value: true },
         ],
     },
     {
