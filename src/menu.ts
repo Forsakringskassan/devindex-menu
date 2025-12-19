@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/prefer-nullish-coalescing -- Technical debt */
 /* eslint-disable @typescript-eslint/restrict-template-expressions -- Technical debt */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment  -- Technical debt */
 
@@ -65,8 +64,7 @@ function evaluateMock<T>(mock: MockResponse<T>): StaticMockResponse<T> {
  * @returns Returns the generated markup as a string.
  */
 function generateOptionMarkupForSelect(setting: SelectSettings): string {
-    const reload =
-        setting.reloadOnChange !== undefined ? setting.reloadOnChange : true;
+    const reload = setting.reloadOnChange ?? true;
     const description = setting.description
         ? `<p>${setting.description}</p>`
         : "";
@@ -157,7 +155,7 @@ function isMock(
  * corresponding to the first cookie found in the matcher.
  */
 function getFirstCookie(matcher: MockMatcher): { key: string; value: string } {
-    const entries = Object.entries(matcher.request.cookies || {});
+    const entries = Object.entries(matcher.request.cookies ?? {});
     const [key, value] = entries[0];
     return { key, value };
 }
