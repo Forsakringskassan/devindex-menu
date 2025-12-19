@@ -2,6 +2,12 @@
   "name": "@forsakringskassan/devindex-menu",
   "version": "1.10.0",
   "description": "",
+  "homepage": "https://github.com/Forsakringskassan/devindex-menu",
+  "bugs": "https://github.com/Forsakringskassan/devindex-menu/issues",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Forsakringskassan/devindex-menu.git"
+  },
   "license": "ISC",
   "author": "FK",
   "exports": {
