@@ -7,6 +7,14 @@ window.callFunction = function () {
 
 menu([
     {
+        key: "simple-option",
+        title: "Simple option with a selected default value",
+        options: [
+            { title: "Default mock", value: "default" },
+            { title: "Special mock", value: "special" },
+        ],
+    },
+    {
         key: "slow-load",
         title: "Delay",
         reloadOnChange: true,
@@ -40,6 +48,20 @@ menu([
         title: "Text field",
         description: "Input field for text.",
         type: "text",
+    },
+    {
+        type: "links",
+        title: "Helpful links",
+        options: [
+            {
+                title: "Sub page",
+                href: "/foo",
+            },
+            {
+                title: "Hashmode link",
+                href: "/#/view",
+            },
+        ],
     },
 ]);
 
