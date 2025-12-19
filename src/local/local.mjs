@@ -18,11 +18,21 @@ menu([
     {
         key: "exec-logic",
         title: "Menu with function call",
+        description: "Calls a function on change.",
         execOnChange: "callFunction",
         reloadOnChange: false,
         options: [
             { title: "Option A", value: false },
             { title: "Option B", value: true },
+        ],
+    },
+    {
+        key: "option-session",
+        title: "Save to session",
+        sessionStorage: true,
+        options: [
+            { title: "Option A", value: { foo: "bar" } },
+            { title: "Option B", value: { bar: "foo" } },
         ],
     },
     {
