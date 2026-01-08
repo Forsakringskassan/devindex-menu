@@ -73,6 +73,6 @@
     "node": ">= 22.0.0"
   },
   "dependencies": {
-    "@fkui/logic": "6.32.0"
+    "@fkui/logic": "6.32.1"
   }
 }
