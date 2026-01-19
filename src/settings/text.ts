@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion -- disable */
 import { findCookie, setCookie } from "@fkui/logic";
 
-import { type TextSettings } from "../menu";
+import { type TextSettings, ONE_MONTH_IN_SECONDS } from "../menu";
 
 const template = `
 <template id="devindex-text">
@@ -12,7 +12,6 @@ const template = `
 </template>
 `;
 
-const ONE_MONTH_IN_SECONDS = 2592000;
 function createElement(setting: TextSettings): DocumentFragment {
     const template: HTMLTemplateElement =
         document.querySelector("#devindex-text")!;

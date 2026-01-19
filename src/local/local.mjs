@@ -63,6 +63,17 @@ menu([
             },
         ],
     },
+    {
+        key: "scenario1",
+        type: "scenario",
+        title: "Scenario 1",
+        description: "A dummy scenario for testing.",
+        cookies: {
+            a: "b",
+            foo: "bar",
+            "slow-load": undefined,
+        },
+    },
 ]);
 
 const getCookies = function () {
