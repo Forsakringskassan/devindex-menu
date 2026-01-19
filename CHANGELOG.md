@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## [2.0.4](https://github.com/Forsakringskassan/devindex-menu/compare/v2.0.3...v2.0.4) (2026-01-19)
+
+### Bug Fixes
+
+* type is optional when option is Select ([2d269a1](https://github.com/Forsakringskassan/devindex-menu/commit/2d269a1d98067d0c7b2694f3cf9d1b88b30ff092))
+* updated typings path ([fa2b137](https://github.com/Forsakringskassan/devindex-menu/commit/fa2b137aec3fdeebdb3db7d107237397559d58ec))
+
 ## [2.0.3](https://github.com/Forsakringskassan/devindex-menu/compare/v2.0.2...v2.0.3) (2026-01-16)
 
 ### Bug Fixes
