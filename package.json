@@ -24,7 +24,7 @@
   },
   "main": "dist/cjs/menu.js",
   "module": "dist/esm/menu.js",
-  "types": "./menu.d.ts",
+  "types": "dist/types/menu.d.ts",
   "files": [
     "dist"
   ],
@@ -32,7 +32,7 @@
     "prebuild": "tsc",
     "build": "node ./scripts/generate.mjs",
     "postbuild": "npm run types:main && npm run types:pageobject",
-    "types:main": "dts-bundle-generator -o dist/types/index.d.ts temp/types/menu.d.ts",
+    "types:main": "dts-bundle-generator -o dist/types/menu.d.ts temp/types/menu.d.ts",
     "types:pageobject": "dts-bundle-generator -o dist/types/pageobjects.d.ts temp/types/pageobjects.d.ts",
     "eslint": "eslint --cache .",
     "prettier:check": "prettier --check .",
