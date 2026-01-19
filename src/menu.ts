@@ -18,7 +18,7 @@ export interface SelectOption {
 }
 
 export interface SelectSettings {
-    type: "select";
+    type?: "select";
     key: string;
     title: string;
     reloadOnChange?: boolean;
@@ -190,7 +190,7 @@ function entryFromMock(mock: Mock): Settings {
 }
 
 const defaultSetting = {
-    type: "select",
+    type: "select" as const,
 };
 
 /**
