@@ -107,6 +107,18 @@ Inside the application, the mock is then sent directly to `devindexMenu`.
 
 ```json
 { title: String, href: String },
+```
+
+#### Scenario
+
+```typescript
+{
+    type: "scenario";
+    key: string;
+    title: string;
+    description?: string;
+    cookies: Record<string, string | undefined>;
+ },
 
 ```
 

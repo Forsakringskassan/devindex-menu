@@ -22,4 +22,8 @@ export class DevindexPageObject {
     public textField(name: string, value: string): void {
         cy.get(`input[name="${name}"]`).clear().type(value);
     }
+
+    public scenario(id: string): void {
+        cy.get(`#${id}`).click();
+    }
 }

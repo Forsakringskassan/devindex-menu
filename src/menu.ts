@@ -8,6 +8,7 @@ import {
 } from "@forsakringskassan/apimock-express";
 
 import client from "./client.js?raw"; // Using raw-loader for inline content
+import scenarioElement from "./settings/scenario";
 import textElement from "./settings/text";
 
 import styling from "./style.scss";
@@ -48,9 +49,23 @@ export interface TextSettings {
     options: LinkOption[];
 }
 
-const settingsNodes: DocumentFragment[] = [];
+export interface ScenarioSetting {
+    type: "scenario";
+    key: string;
+    title: string;
+    description?: string;
+    cookies: Record<string, string | undefined>;
+}
 
-export type Settings = SelectSettings | LinkSettings | TextSettings;
+export type Settings =
+    | SelectSettings
+    | LinkSettings
+    | TextSettings
+    | ScenarioSetting;
+
+export const ONE_MONTH_IN_SECONDS = 2592000;
+
+const settingsNodes: DocumentFragment[] = [];
 
 function evaluateMock<T>(mock: MockResponse<T>): StaticMockResponse<T> {
     /* if the mock is a `DynamicMockResponse` evaluate the function */
@@ -118,6 +133,9 @@ function generateOptionMarkup(setting: Settings): string {
             return generateOptionMarkupForLink(setting);
         case "text":
             settingsNodes.push(textElement.createElement(setting));
+            break;
+        case "scenario":
+            settingsNodes.push(scenarioElement.createElement(setting));
     }
     return "";
 }
@@ -203,6 +221,7 @@ export default (userSettingsAndMocks: Array<Settings | Mock>): void => {
         "beforeend",
         `
         ${textElement.template}
+        ${scenarioElement.template}
      `,
     );
 

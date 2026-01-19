@@ -101,4 +101,29 @@ describe("devindex", () => {
             pageobject.el().should("not.visible");
         });
     });
+
+    describe("scenario", () => {
+        it("should be able to activate scenario", () => {
+            cy.visit("/");
+            pageobject.toggleMenu();
+            cy.getCookie("a").should("not.exist");
+            cy.getCookie("foo").should("not.exist");
+
+            pageobject.scenario("scenario1");
+            cy.getCookie("a").should("have.property", "value", "b");
+            cy.getCookie("foo").should("have.property", "value", "bar");
+        });
+
+        it("should be able to remove cookies in scenario", () => {
+            cy.visit("/");
+            pageobject.toggleMenu();
+
+            pageobject.valj("slow-load", "true");
+            cy.getCookie("slow-load").should("have.property", "value", "true");
+
+            pageobject.toggleMenu();
+            pageobject.scenario("scenario1");
+            cy.getCookie("slow-load").should("not.exist");
+        });
+    });
 });
