@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## [2.1.0](https://github.com/Forsakringskassan/devindex-menu/compare/v2.0.4...v2.1.0) (2026-01-23)
+
+### Features
+
+* scenario option ([c5c09ee](https://github.com/Forsakringskassan/devindex-menu/commit/c5c09eea6074636bae07ffc02df31f9171f1b61d))
+
 ## [2.0.4](https://github.com/Forsakringskassan/devindex-menu/compare/v2.0.3...v2.0.4) (2026-01-19)
 
 ### Bug Fixes
