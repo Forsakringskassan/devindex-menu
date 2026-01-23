@@ -63,7 +63,7 @@
     "@forsakringskassan/eslint-config-jest": "13.2.9",
     "@forsakringskassan/eslint-config-typescript": "13.2.11",
     "@forsakringskassan/eslint-config-typescript-typeinfo": "13.2.11",
-    "@forsakringskassan/prettier-config": "3.3.2",
+    "@forsakringskassan/prettier-config": "3.3.3",
     "@tsconfig/node22": "22.0.5",
     "@types/node": "22.19.7",
     "cypress": "15.9.0",
