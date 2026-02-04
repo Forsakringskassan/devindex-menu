@@ -115,7 +115,7 @@ function generateOptionMarkupForLink(setting: LinkSettings): string {
 
     let markup = `${setting.title} ${description}<ul>`;
     setting.options.forEach((option) => {
-        markup += `<li><a href="${option.href}">${option.title}</a></li>`;
+        markup += `<li><a href="${option.href}" tabindex="-1">${option.title}</a></li>`;
     });
     markup = `${markup}</ul>`;
     return markup;
@@ -242,7 +242,7 @@ export default (userSettingsAndMocks: Array<Settings | Mock>): void => {
         "beforeend",
         `
     <div class="secret-menu" aria-hidden="true">
-        <button type="button" class="toggle" onclick="toggleMenu()">
+        <button type="button" class="toggle" tabindex="-1" onclick="toggleMenu()">
             <span></span>
             <span></span>
             <span></span>
