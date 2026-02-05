@@ -7,7 +7,7 @@ const template = `
 <template id="devindex-scenario">
   <span><!-- title --></span>
   <p><!-- description --></p>
-  <button type="button">Activate scenario</button>
+  <button type="button" tabindex="-1">Activate scenario</button>
 </template>
 `;
 

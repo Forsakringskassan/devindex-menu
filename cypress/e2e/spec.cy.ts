@@ -16,6 +16,11 @@ describe("devindex", () => {
         pageobject.el().should("be.visible");
     });
 
+    it("should have correct html", () => {
+        cy.visit("/");
+        cy.htmlvalidate();
+    });
+
     describe("select field", () => {
         it("should have default value selected if cookie not defined", () => {
             pageobject.toggleMenu();
