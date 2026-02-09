@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## [2.1.3](https://github.com/Forsakringskassan/devindex-menu/compare/v2.1.2...v2.1.3) (2026-02-09)
+
+### Bug Fixes
+
+* html-validation errors ([6488024](https://github.com/Forsakringskassan/devindex-menu/commit/6488024f3ba3d08847f1e3d675df7d11564f8e9f))
+
 ## [2.1.2](https://github.com/Forsakringskassan/devindex-menu/compare/v2.1.1...v2.1.2) (2026-02-06)
 
 ### Bug Fixes
