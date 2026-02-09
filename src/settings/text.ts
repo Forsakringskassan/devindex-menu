@@ -1,14 +1,14 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion -- disable */
-import { findCookie, setCookie } from "@fkui/logic";
+import { ElementIdService, findCookie, setCookie } from "@fkui/logic";
 
 import { type TextSettings, ONE_MONTH_IN_SECONDS } from "../menu";
 
 const template = `
 <template id="devindex-text">
-    <span><!-- title --></span>
-    <p><!-- description --></p>
+    <label for="devindex-text-input">dummy-label</label>
+    <span><!-- description --></span>
     <br />
-    <input type="text"></input>
+    <input type="text" id="devindex-text-input" tabindex="-1"></input>
 </template>
 `;
 
@@ -17,12 +17,15 @@ function createElement(setting: TextSettings): DocumentFragment {
         document.querySelector("#devindex-text")!;
     const clone = document.importNode(template.content, true);
 
-    const title = clone.querySelector("span")!;
-    const description = clone.querySelector("p")!;
+    const label = clone.querySelector("label")!;
+    const description = clone.querySelector("span")!;
     const input = clone.querySelector("input")!;
+
+    const id = ElementIdService.generateElementId();
 
     input.name = setting.key;
     input.value = findCookie(input.name) ?? "";
+    input.id = id;
 
     input.addEventListener("input", () => {
         setCookie({
@@ -32,7 +35,8 @@ function createElement(setting: TextSettings): DocumentFragment {
         });
     });
 
-    title.textContent = setting.title;
+    label.textContent = setting.title;
+    label.setAttribute("for", id);
 
     if (setting.description) {
         description.textContent = setting.description;
