@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## [2.1.5](https://github.com/Forsakringskassan/devindex-menu/compare/v2.1.4...v2.1.5) (2026-02-20)
+
+### Bug Fixes
+
+* **deps:** update dependency @fkui/logic to v6.36.1 ([81f3709](https://github.com/Forsakringskassan/devindex-menu/commit/81f37099fb3f2cd4159dad60a172f1986690a912))
+
 ## [2.1.4](https://github.com/Forsakringskassan/devindex-menu/compare/v2.1.3...v2.1.4) (2026-02-13)
 
 ### Bug Fixes
