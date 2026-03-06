@@ -1,1 +1,1 @@
-export * from "./pageobjects/Devindex.pageobject";
+export * from "./pageobjects/devindex.pageobject";

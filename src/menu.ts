@@ -90,7 +90,7 @@ function generateOptionMarkupForSelect(setting: SelectSettings): string {
         ? ` data-exec-on-change="${setting.execOnChange}"`
         : "";
     let markup = `<label for="${setting.key}" class="label">${setting.title}</label>${description}<select id="${setting.key}" data-sessionStorage="${setting.sessionStorage}" data-reload="${reload}" ${execOnChange} name="${setting.key}" tabindex="-1">`;
-    setting.options.forEach((option) => {
+    for (const option of setting.options) {
         const stateJson =
             typeof option.value === "string"
                 ? option.value
@@ -99,7 +99,7 @@ function generateOptionMarkupForSelect(setting: SelectSettings): string {
             ? btoa(stateJson)
             : option.value;
         markup += `<option value="${optionValue}">${option.title}</option>`;
-    });
+    }
     markup = `${markup}</select>`;
     return markup;
 }
@@ -114,9 +114,9 @@ function generateOptionMarkupForLink(setting: LinkSettings): string {
         : "";
 
     let markup = `${setting.title} ${description}<ul>`;
-    setting.options.forEach((option) => {
+    for (const option of setting.options) {
         markup += `<li><a href="${option.href}" tabindex="-1">${option.title}</a></li>`;
-    });
+    }
     markup = `${markup}</ul>`;
     return markup;
 }
@@ -226,16 +226,14 @@ export default (userSettingsAndMocks: Array<Settings | Mock>): void => {
     );
 
     let settingsMarkup = "";
-    userSettingsAndMocks
-        .map((userSettingOrMock) =>
-            isMock(userSettingOrMock)
-                ? entryFromMock(userSettingOrMock)
-                : userSettingOrMock,
-        )
-        .forEach((userSetting) => {
-            const setting: Settings = { ...defaultSetting, ...userSetting };
-            settingsMarkup = settingsMarkup + generateOptionMarkup(setting);
-        });
+    for (const userSetting of userSettingsAndMocks.map((userSettingOrMock) =>
+        isMock(userSettingOrMock)
+            ? entryFromMock(userSettingOrMock)
+            : userSettingOrMock,
+    )) {
+        const setting: Settings = { ...defaultSetting, ...userSetting };
+        settingsMarkup = settingsMarkup + generateOptionMarkup(setting);
+    }
 
     /* Markup */
     document.body.insertAdjacentHTML(
@@ -263,6 +261,6 @@ export default (userSettingsAndMocks: Array<Settings | Mock>): void => {
 
     /* Client JS */
     const script = document.createElement("script");
-    script.innerText = client;
-    document.body.appendChild(script);
+    script.textContent = client;
+    document.body.append(script);
 };

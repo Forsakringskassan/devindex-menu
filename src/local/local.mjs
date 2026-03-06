@@ -79,15 +79,15 @@ menu([
 const getCookies = function () {
     const pairs = document.cookie.split(";");
     const cookies = {};
-    for (let i = 0; i < pairs.length; i++) {
-        const pair = pairs[i].split("=");
+    for (const pair_ of pairs) {
+        const pair = pair_.split("=");
         cookies[`${pair[0]}`.trim()] = unescape(pair.slice(1).join("="));
     }
     return cookies;
 };
 
 const updateCookiesDisplay = () => {
-    const cookiesElement = document.getElementById("cookies");
+    const cookiesElement = document.querySelector("#cookies");
     if (cookiesElement) {
         cookiesElement.innerHTML = JSON.stringify(getCookies(), null, 2);
     }

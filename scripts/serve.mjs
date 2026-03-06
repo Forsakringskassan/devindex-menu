@@ -1,6 +1,6 @@
 import esbuild from "esbuild";
 import { sassPlugin } from "esbuild-sass-plugin";
-import { rawPlugin } from "./rawPlugin.mjs";
+import { rawPlugin } from "./raw-plugin.mjs";
 
 const ctx = await esbuild.context({
     entryPoints: ["./src/local/index.html", "./src/local/local.mjs"],
