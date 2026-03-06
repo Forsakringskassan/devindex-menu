@@ -1,7 +1,7 @@
 import { rm } from "node:fs/promises";
 import { build } from "esbuild";
 import { sassPlugin } from "esbuild-sass-plugin";
-import { rawPlugin } from "./rawPlugin.mjs";
+import { rawPlugin } from "./raw-plugin.mjs";
 
 await rm("./dist", { force: true, recursive: true });
 

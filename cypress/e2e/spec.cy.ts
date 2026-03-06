@@ -1,4 +1,4 @@
-import { DevindexPageObject } from "../../src/pageobjects/Devindex.pageobject";
+import { DevindexPageObject } from "../../src/pageobjects/devindex.pageobject";
 
 describe("devindex", () => {
     const pageobject = new DevindexPageObject();
