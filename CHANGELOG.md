@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## [2.1.7](https://github.com/Forsakringskassan/devindex-menu/compare/v2.1.6...v2.1.7) (2026-03-06)
+
+### Bug Fixes
+
+* **deps:** update [@fkui](https://github.com/fkui) packages to v6.38.0 ([92935c4](https://github.com/Forsakringskassan/devindex-menu/commit/92935c4af9ddd2e66c50fb2a52afd77b9f4cfb37))
+
 ## [2.1.6](https://github.com/Forsakringskassan/devindex-menu/compare/v2.1.5...v2.1.6) (2026-02-27)
 
 ### Bug Fixes
