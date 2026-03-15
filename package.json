@@ -55,7 +55,7 @@
     "@babel/core": "7.29.0",
     "@babel/preset-env": "7.29.0",
     "@fkui/tsconfig": "6.39.0",
-    "@forsakringskassan/apimock-express": "2.14.1",
+    "@forsakringskassan/apimock-express": "2.15.0",
     "@forsakringskassan/commitlint-config": "3.3.7",
     "@forsakringskassan/eslint-config": "14.0.0",
     "@forsakringskassan/eslint-config-cli": "14.0.0",
