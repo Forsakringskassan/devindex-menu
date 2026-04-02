@@ -73,7 +73,7 @@
     "esbuild-sass-plugin": "3.7.0",
     "npm-pkg-lint": "4.6.2",
     "sass": "1.98.0",
-    "typescript": "5.9.3"
+    "typescript": "6.0.2"
   },
   "engines": {
     "node": ">= 22.0.0"
