@@ -1,11 +1,12 @@
 {
     "extends": "@tsconfig/node22",
     "compilerOptions": {
+        "rootDir": "./src",
+        "outDir": "./dist",
         "target": "es2022",
         "declaration": true,
         "declarationDir": "temp/types",
         "emitDeclarationOnly": true,
-        "outDir": "./dist",
         "types": ["cypress", "node"],
         "lib": ["dom"],
         "allowJs": true
