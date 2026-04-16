@@ -54,7 +54,7 @@
   "devDependencies": {
     "@babel/core": "7.29.0",
     "@babel/preset-env": "7.29.2",
-    "@fkui/tsconfig": "6.42.0",
+    "@fkui/tsconfig": "6.43.0",
     "@forsakringskassan/apimock-express": "2.15.1",
     "@forsakringskassan/commitlint-config": "3.3.11",
     "@forsakringskassan/eslint-config": "14.1.2",
@@ -79,6 +79,6 @@
     "node": ">= 22.0.0"
   },
   "dependencies": {
-    "@fkui/logic": "6.42.0"
+    "@fkui/logic": "6.43.0"
   }
 }
