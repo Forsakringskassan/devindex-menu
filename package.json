@@ -36,13 +36,13 @@
     "prebuild": "tsc",
     "build": "node ./scripts/generate.mjs",
     "postbuild": "npm run types:main && npm run types:pageobject",
-    "types:main": "dts-bundle-generator -o dist/types/menu.d.ts temp/types/menu.d.ts",
-    "types:pageobject": "dts-bundle-generator -o dist/types/pageobjects.d.ts temp/types/pageobjects.d.ts",
     "eslint": "eslint --cache .",
     "prettier:check": "prettier --check .",
     "prettier:write": "prettier --write .",
+    "start": "node ./scripts/serve.mjs",
     "test": "npm run prettier:check && npm run eslint",
-    "start": "node ./scripts/serve.mjs"
+    "types:main": "dts-bundle-generator -o dist/types/menu.d.ts temp/types/menu.d.ts",
+    "types:pageobject": "dts-bundle-generator -o dist/types/pageobjects.d.ts temp/types/pageobjects.d.ts"
   },
   "commitlint": {
     "extends": "@forsakringskassan/commitlint-config/no-jira"
@@ -50,6 +50,9 @@
   "prettier": "@forsakringskassan/prettier-config",
   "release": {
     "extends": "@forsakringskassan/semantic-release-config"
+  },
+  "dependencies": {
+    "@fkui/logic": "6.43.0"
   },
   "devDependencies": {
     "@babel/core": "7.29.0",
@@ -63,7 +66,7 @@
     "@forsakringskassan/eslint-config-jest": "14.1.9",
     "@forsakringskassan/eslint-config-typescript": "14.1.10",
     "@forsakringskassan/eslint-config-typescript-typeinfo": "14.1.10",
-    "@forsakringskassan/prettier-config": "3.3.7",
+    "@forsakringskassan/prettier-config": "3.3.8",
     "@tsconfig/node22": "22.0.5",
     "@types/node": "22.19.17",
     "cypress": "15.13.1",
@@ -77,8 +80,5 @@
   },
   "engines": {
     "node": ">= 22.0.0"
-  },
-  "dependencies": {
-    "@fkui/logic": "6.43.0"
   }
 }
