@@ -20,7 +20,7 @@ jobs:
             - name: Build
               run: npm run build
             - name: Cypress E2E tests
-              uses: cypress-io/github-action@v6
+              uses: cypress-io/github-action@v7
               with:
                   summary-title: "E2E tests"
                   start: npm start
