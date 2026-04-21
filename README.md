@@ -28,7 +28,31 @@ require("@forsakringskassan/devindex-menu")([
 
 When execOnChange is set to a value, the global function with this name will be called on onChange of the dropdown list.
 
+### With options
+
+The menu can have an options object as an optional second parameter.
+
+```js
+require("@forsakringskassan/devindex-menu")(
+    [
+        {
+            key: "example",
+            title: "Example",
+            options: [
+                { title: "Default mock", value: "default" },
+                { title: "Special mock", value: "special" },
+            ],
+        },
+    ],
+    {
+        position: "right",
+    },
+);
+```
+
 ## API
+
+Menu content
 
 ```js
 [
@@ -41,6 +65,16 @@ When execOnChange is set to a value, the global function with this name will be 
         sessionStorage: Boolean (optional, default: false),
         execOnChange: String (optional),
         options: [], Array (see types below)
+    },
+]
+```
+
+Options
+
+```js
+[
+    {
+        position: "left" | "right" (optional, default: "left"), // Controls if the menu is placed on the left or the right side of the page.
     },
 ]
 ```

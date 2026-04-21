@@ -63,6 +63,10 @@ export type Settings =
     | TextSettings
     | ScenarioSetting;
 
+export interface MenuOptions {
+    position?: "left" | "right";
+}
+
 export const ONE_MONTH_IN_SECONDS = 2592000;
 
 const settingsNodes: DocumentFragment[] = [];
@@ -211,10 +215,19 @@ const defaultSetting = {
     type: "select" as const,
 };
 
+const defaultOptions: MenuOptions = {
+    position: "left",
+};
+
 /**
  * @param userSettingsAndMocks - An array of user settings and/or mocks to generate the menu from.
  */
-export default (userSettingsAndMocks: Array<Settings | Mock>): void => {
+export default (
+    userSettingsAndMocks: Array<Settings | Mock>,
+    menuOptions?: MenuOptions,
+): void => {
+    const options = { ...defaultOptions, ...menuOptions };
+
     /* Client CSS */
     document.head.insertAdjacentHTML("beforeend", `<style>${styling}</style>`);
     document.body.insertAdjacentHTML(
@@ -239,7 +252,7 @@ export default (userSettingsAndMocks: Array<Settings | Mock>): void => {
     document.body.insertAdjacentHTML(
         "beforeend",
         `
-    <div class="secret-menu" aria-hidden="true">
+    <div class="secret-menu${options.position === "right" ? " secret-menu--right" : ""}" aria-hidden="true">
         <button type="button" class="toggle" tabindex="-1" onclick="toggleMenu()">
             <span></span>
             <span></span>
