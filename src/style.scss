@@ -11,6 +11,21 @@ $BACKGROUND_COLOR: #333;
     color: #efefef;
     position: fixed;
 
+    &.secret-menu--right {
+        left: auto;
+        right: 0;
+
+        .toggle {
+            left: auto;
+            right: 0px;
+            top: 40px;
+            border-top-right-radius: 0px;
+            border-bottom-right-radius: 0px;
+            border-top-left-radius: 5px;
+            border-bottom-left-radius: 5px;
+        }
+    }
+
     .toggle {
         border: 0;
         position: fixed;
@@ -45,9 +60,18 @@ $BACKGROUND_COLOR: #333;
     &.open {
         width: 300px;
         overflow: auto;
+
+        &.secret-menu--right {
+            .toggle {
+                left: auto;
+                right: 300px;
+            }
+        }
+
         .toggle {
             left: 300px;
         }
+
         .menu {
             padding: 20px;
             box-sizing: border-box;
