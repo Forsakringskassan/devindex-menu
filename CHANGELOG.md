@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## [2.2.0](https://github.com/Forsakringskassan/devindex-menu/compare/v2.1.11...v2.2.0) (2026-04-21)
+
+### Features
+
+* add option to place the menu to the right side ([ed50c2d](https://github.com/Forsakringskassan/devindex-menu/commit/ed50c2dac7b2c40b5940435cad3ce03411ae87c4))
+
 ## [2.1.11](https://github.com/Forsakringskassan/devindex-menu/compare/v2.1.10...v2.1.11) (2026-04-17)
 
 ### Bug Fixes
