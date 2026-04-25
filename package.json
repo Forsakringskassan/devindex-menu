@@ -62,7 +62,7 @@
     "@forsakringskassan/commitlint-config": "3.3.11",
     "@forsakringskassan/eslint-config": "14.1.14",
     "@forsakringskassan/eslint-config-cli": "14.1.11",
-    "@forsakringskassan/eslint-config-cypress": "14.1.15",
+    "@forsakringskassan/eslint-config-cypress": "14.1.16",
     "@forsakringskassan/eslint-config-jest": "14.1.9",
     "@forsakringskassan/eslint-config-typescript": "14.1.15",
     "@forsakringskassan/eslint-config-typescript-typeinfo": "14.1.15",
