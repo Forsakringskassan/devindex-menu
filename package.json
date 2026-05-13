@@ -52,12 +52,12 @@
     "extends": "@forsakringskassan/semantic-release-config"
   },
   "dependencies": {
-    "@fkui/logic": "6.45.0"
+    "@fkui/logic": "6.46.0"
   },
   "devDependencies": {
     "@babel/core": "7.29.0",
     "@babel/preset-env": "7.29.5",
-    "@fkui/tsconfig": "6.45.0",
+    "@fkui/tsconfig": "6.46.0",
     "@forsakringskassan/apimock-express": "2.15.1",
     "@forsakringskassan/commitlint-config": "3.6.2",
     "@forsakringskassan/eslint-config": "14.1.20",
