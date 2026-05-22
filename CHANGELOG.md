@@ -1,5 +1,15 @@
 # CHANGELOG
 
+## [2.3.0](https://github.com/Forsakringskassan/devindex-menu/compare/v2.2.4...v2.3.0) (2026-05-22)
+
+### Features
+
+* **deps:** require nodejs v22.16 ([0fe9870](https://github.com/Forsakringskassan/devindex-menu/commit/0fe987053d8bf10ad709e3d1fa1d4e614700964f))
+
+### Bug Fixes
+
+* **deps:** update [@fkui](https://github.com/fkui) packages to v6.47.0 ([0d25b6c](https://github.com/Forsakringskassan/devindex-menu/commit/0d25b6cb196b5fb7299a8ca2d59c90a85b3f7f36))
+
 ## [2.2.4](https://github.com/Forsakringskassan/devindex-menu/compare/v2.2.3...v2.2.4) (2026-05-15)
 
 ### Bug Fixes
