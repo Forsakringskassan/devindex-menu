@@ -74,7 +74,7 @@
     "dts-bundle-generator": "9.5.1",
     "esbuild": "0.28.1",
     "esbuild-sass-plugin": "3.7.0",
-    "npm-pkg-lint": "5.1.6",
+    "npm-pkg-lint": "5.1.7",
     "sass": "1.100.0",
     "typescript": "6.0.3"
   },
