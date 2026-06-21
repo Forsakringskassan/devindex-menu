@@ -56,8 +56,8 @@
     "@fkui/logic": "6.50.0"
   },
   "devDependencies": {
-    "@babel/core": "7.29.7",
-    "@babel/preset-env": "7.29.7",
+    "@babel/core": "8.0.1",
+    "@babel/preset-env": "8.0.2",
     "@fkui/tsconfig": "6.50.0",
     "@forsakringskassan/apimock-express": "3.0.0",
     "@forsakringskassan/commitlint-config": "4.0.0",

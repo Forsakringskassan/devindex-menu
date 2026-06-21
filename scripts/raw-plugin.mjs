@@ -1,6 +1,6 @@
 import { readFile } from "node:fs/promises";
 import path from "node:path";
-import babel from "@babel/core";
+import * as babel from "@babel/core";
 
 export function rawPlugin() {
     return {
