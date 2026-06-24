@@ -60,7 +60,7 @@
     "@babel/preset-env": "8.0.2",
     "@fkui/tsconfig": "6.50.0",
     "@forsakringskassan/apimock-express": "3.0.0",
-    "@forsakringskassan/commitlint-config": "4.1.0",
+    "@forsakringskassan/commitlint-config": "4.1.1",
     "@forsakringskassan/eslint-config": "15.1.0",
     "@forsakringskassan/eslint-config-cli": "15.1.0",
     "@forsakringskassan/eslint-config-cypress": "15.1.0",
