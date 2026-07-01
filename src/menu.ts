@@ -58,10 +58,7 @@ export interface ScenarioSetting {
 }
 
 export type Settings =
-    | SelectSettings
-    | LinkSettings
-    | TextSettings
-    | ScenarioSetting;
+    SelectSettings | LinkSettings | TextSettings | ScenarioSetting;
 
 export interface MenuOptions {
     position?: "left" | "right";
