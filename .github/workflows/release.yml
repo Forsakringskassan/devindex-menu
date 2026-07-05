@@ -14,7 +14,7 @@ permissions:
 
 jobs:
     release:
-        uses: Forsakringskassan/.github/.github/workflows/npm-release.yaml@main
+        uses: Forsakringskassan/.github/.github/workflows/npm-release.yaml@a8d2864a5e15a8bdb1d28bfbe3c1222c4e4ca344 # main
         with:
             app-id: ${{ vars.RELEASE_APP_ID }}
         secrets:
