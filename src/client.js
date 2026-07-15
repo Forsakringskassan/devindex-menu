@@ -31,13 +31,11 @@ function getCookie(cookieName) {
     return undefined;
 }
 
-(function () {
+{
     /** @type {NodeListOf<HTMLSelectElement>} */
     const selections = document.querySelectorAll(".secret-menu select");
     for (const select of selections) {
-        select.value = getCookie(select.name)
-            ? getCookie(select.name)
-            : "default";
+        select.value = getCookie(select.name) ?? "default";
 
         if (select.dataset.sessionstorage === "true") {
             const cookieValue = getCookie(select.name);
@@ -86,7 +84,7 @@ function getCookie(cookieName) {
              */
             link.addEventListener("click", function (event) {
                 event.preventDefault();
-                window.location.href = event.target.getAttribute("href");
+                window.location.assign(event.target.getAttribute("href"));
                 setTimeout(() => {
                     console.log("Reload after click on hash-link.");
                     location.reload();
@@ -94,11 +92,12 @@ function getCookie(cookieName) {
             });
         }
     }
-})();
+}
 
 function toggleMenu() {
     const menu = document.querySelector(".secret-menu");
     menu.classList.toggle("open");
 }
 
+/* eslint-disable-next-line unicorn/no-global-object-property-assignment -- technical debt */
 window.toggleMenu = toggleMenu;

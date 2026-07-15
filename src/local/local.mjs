@@ -1,6 +1,7 @@
 /* global document, window, location */
 import menu from "../menu.ts";
 
+/* eslint-disable-next-line unicorn/no-global-object-property-assignment -- technical debt */
 window.callFunction = function () {
     location.replace("#function-called");
 };
@@ -81,7 +82,7 @@ const getCookies = function () {
     const cookies = {};
     for (const pair_ of pairs) {
         const pair = pair_.split("=");
-        cookies[`${pair[0]}`.trim()] = unescape(pair.slice(1).join("="));
+        cookies[pair[0].trim()] = unescape(pair.slice(1).join("="));
     }
     return cookies;
 };
