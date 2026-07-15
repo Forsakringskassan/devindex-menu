@@ -64,7 +64,7 @@ export interface MenuOptions {
     position?: "left" | "right";
 }
 
-export const ONE_MONTH_IN_SECONDS = 2592000;
+export const ONE_MONTH_IN_SECONDS = 2_592_000;
 
 const settingsNodes: DocumentFragment[] = [];
 
@@ -73,9 +73,8 @@ function evaluateMock<T>(mock: MockResponse<T>): StaticMockResponse<T> {
     if (typeof mock === "function") {
         const req = {};
         return mock(req);
-    } else {
-        return mock;
     }
+    return mock;
 }
 
 /**
@@ -101,7 +100,7 @@ function generateOptionMarkupForSelect(setting: SelectSettings): string {
             : option.value;
         markup += `<option value="${optionValue}">${option.title}</option>`;
     }
-    markup = `${markup}</select>`;
+    markup += `</select>`;
     return markup;
 }
 
@@ -118,7 +117,7 @@ function generateOptionMarkupForLink(setting: LinkSettings): string {
     for (const option of setting.options) {
         markup += `<li><a href="${option.href}" tabindex="-1">${option.title}</a></li>`;
     }
-    markup = `${markup}</ul>`;
+    markup += `</ul>`;
     return markup;
 }
 
@@ -236,13 +235,14 @@ export default (
     );
 
     let settingsMarkup = "";
-    for (const userSetting of userSettingsAndMocks.map((userSettingOrMock) =>
-        isMock(userSettingOrMock)
+    const userSettings = userSettingsAndMocks.map((userSettingOrMock) => {
+        return isMock(userSettingOrMock)
             ? entryFromMock(userSettingOrMock)
-            : userSettingOrMock,
-    )) {
+            : userSettingOrMock;
+    });
+    for (const userSetting of userSettings) {
         const setting: Settings = { ...defaultSetting, ...userSetting };
-        settingsMarkup = settingsMarkup + generateOptionMarkup(setting);
+        settingsMarkup += generateOptionMarkup(setting);
     }
 
     /* Markup */
