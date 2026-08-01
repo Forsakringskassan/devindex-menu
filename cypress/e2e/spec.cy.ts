@@ -2,9 +2,11 @@ import { DevindexPageObject } from "../../src/pageobjects/Devindex.pageobject";
 
 describe("devindex", () => {
     const pageobject = new DevindexPageObject();
+
     beforeEach(() => {
         cy.visit("/");
     });
+
     it("local page should load", () => {
         cy.visit("/");
         cy.get("body").contains("Local DevIndex");
