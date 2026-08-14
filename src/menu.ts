@@ -68,11 +68,13 @@ export const ONE_MONTH_IN_SECONDS = 2_592_000;
 
 const settingsNodes: DocumentFragment[] = [];
 
-function evaluateMock<T>(mock: MockResponse<T>): StaticMockResponse<T> {
+async function evaluateMock<T>(
+    mock: MockResponse<T>,
+): Promise<StaticMockResponse<T>> {
     /* if the mock is a `DynamicMockResponse` evaluate the function */
     if (typeof mock === "function") {
         const req = {};
-        return mock(req);
+        return await mock(req);
     }
     return mock;
 }
@@ -176,7 +178,7 @@ function getFirstCookie(matcher: MockMatcher): { key: string; value: string } {
  * @param mock - The mock to get an entry from.
  * @returns The entry generated from this mock.
  */
-function entryFromMock(mock: Mock): Settings {
+async function entryFromMock(mock: Mock): Promise<Settings> {
     if (!mock.responses || mock.responses.length === 0) {
         throw new Error(
             "Mock must have at least one response to generate entry from.",
@@ -184,26 +186,28 @@ function entryFromMock(mock: Mock): Settings {
     }
     const { key } = getFirstCookie(mock.responses[0]);
     const title = mock.meta?.title ?? key;
+    const defaultResponse = await evaluateMock(mock.defaultResponse);
     const defaultEntry = {
-        title: evaluateMock(mock.defaultResponse).label ?? "Default",
+        title: defaultResponse.label ?? "Default",
         value: "default",
     };
+    const responses = await Promise.all(
+        mock.responses.map(async (entry) => {
+            const { value } = getFirstCookie(entry);
+            const response = await evaluateMock(entry.response);
+
+            return {
+                title: response.label ?? value,
+                value,
+            };
+        }),
+    );
 
     return {
         type: "select",
         key,
         title,
-        options: [
-            defaultEntry,
-            ...mock.responses.map((entry) => {
-                const { value } = getFirstCookie(entry);
-
-                return {
-                    title: evaluateMock(entry.response).label ?? value,
-                    value,
-                };
-            }),
-        ],
+        options: [defaultEntry, ...responses],
     };
 }
 
@@ -218,10 +222,10 @@ const defaultOptions: MenuOptions = {
 /**
  * @param userSettingsAndMocks - An array of user settings and/or mocks to generate the menu from.
  */
-export default (
+export default async function (
     userSettingsAndMocks: Array<Settings | Mock>,
     menuOptions?: MenuOptions,
-): void => {
+): Promise<void> {
     const options = { ...defaultOptions, ...menuOptions };
 
     /* Client CSS */
@@ -235,11 +239,13 @@ export default (
     );
 
     let settingsMarkup = "";
-    const userSettings = userSettingsAndMocks.map((userSettingOrMock) => {
-        return isMock(userSettingOrMock)
-            ? entryFromMock(userSettingOrMock)
-            : userSettingOrMock;
-    });
+    const userSettings = await Promise.all(
+        userSettingsAndMocks.map(async (userSettingOrMock) => {
+            return isMock(userSettingOrMock)
+                ? entryFromMock(userSettingOrMock)
+                : userSettingOrMock;
+        }),
+    );
     for (const userSetting of userSettings) {
         const setting: Settings = { ...defaultSetting, ...userSetting };
         settingsMarkup += generateOptionMarkup(setting);
@@ -273,4 +279,4 @@ export default (
     const script = document.createElement("script");
     script.textContent = client;
     document.body.append(script);
-};
+}
