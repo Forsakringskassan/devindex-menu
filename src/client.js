@@ -56,6 +56,7 @@ function getCookie(cookieName) {
                 location.reload(true);
             }
 
+            /* eslint-disable-next-line unicorn/prefer-early-return -- for consistency with other if-statements */
             if (element.dataset.sessionstorage === "true") {
                 const sessionKey = element.id;
                 if (element.value) {
