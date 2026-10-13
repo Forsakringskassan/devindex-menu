@@ -7,7 +7,7 @@ permissions:
 
 jobs:
     call-workflow:
-        uses: Forsakringskassan/.github/.github/workflows/bundle-npm-ci.yaml@bfb01f7611f5637d0464bbb5cdc02f2651119030 # main
+        uses: Forsakringskassan/.github/.github/workflows/bundle-npm-ci.yaml@cbd74f159d942a8e96a9acd1dd251601839a7530 # main
     cypress-e2e:
         name: Cypress E2E Tests
         runs-on: ubuntu-latest
