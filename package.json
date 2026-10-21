@@ -45,6 +45,12 @@
     "types:main": "dts-bundle-generator -o dist/types/menu.d.ts temp/types/menu.d.ts",
     "types:pageobject": "dts-bundle-generator -o dist/types/pageobjects.d.ts temp/types/pageobjects.d.ts"
   },
+  "allowScripts": {
+    "@parcel/watcher": false,
+    "cypress": true,
+    "esbuild": true,
+    "unrs-resolver": true
+  },
   "commitlint": {
     "extends": "@forsakringskassan/commitlint-config/no-jira"
   },
@@ -67,7 +73,7 @@
     "@forsakringskassan/eslint-config-jest": "15.12.2",
     "@forsakringskassan/eslint-config-typescript": "15.12.0",
     "@forsakringskassan/eslint-config-typescript-typeinfo": "15.12.0",
-    "@forsakringskassan/prettier-config": "3.7.12",
+    "@forsakringskassan/prettier-config": "3.7.13",
     "@tsconfig/node22": "22.0.6",
     "@types/node": "22.20.5",
     "@typescript/native": "npm:typescript@7.0.2",
@@ -82,11 +88,5 @@
   },
   "engines": {
     "node": "^22.16 || >= 24"
-  },
-  "allowScripts": {
-    "@parcel/watcher": false,
-    "cypress": true,
-    "esbuild": true,
-    "unrs-resolver": true
   }
 }
