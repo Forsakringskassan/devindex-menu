@@ -78,7 +78,7 @@
     "@types/node": "22.20.5",
     "@typescript/native": "npm:typescript@7.0.2",
     "cypress": "16.2.0",
-    "cypress-html-validate": "9.1.0",
+    "cypress-html-validate": "9.2.0",
     "dts-bundle-generator": "9.5.1",
     "esbuild": "0.28.2",
     "esbuild-sass-plugin": "3.7.0",
