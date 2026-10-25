@@ -83,7 +83,7 @@
     "esbuild": "0.28.2",
     "esbuild-sass-plugin": "3.7.0",
     "npm-pkg-lint": "5.4.0",
-    "sass": "1.106.0",
+    "sass": "1.106.1",
     "typescript": "npm:@typescript/typescript6@6.0.2"
   },
   "engines": {
