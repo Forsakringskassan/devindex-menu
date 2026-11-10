@@ -67,7 +67,7 @@
     "@fkui/tsconfig": "6.64.0",
     "@forsakringskassan/apimock-express": "4.4.0",
     "@forsakringskassan/commitlint-config": "4.2.8",
-    "@forsakringskassan/eslint-config": "15.13.6",
+    "@forsakringskassan/eslint-config": "15.13.10",
     "@forsakringskassan/eslint-config-cli": "15.13.6",
     "@forsakringskassan/eslint-config-cypress": "15.13.9",
     "@forsakringskassan/eslint-config-jest": "15.13.0",
