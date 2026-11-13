@@ -59,7 +59,7 @@
     "extends": "@forsakringskassan/semantic-release-config"
   },
   "dependencies": {
-    "@fkui/logic": "6.65.0"
+    "@fkui/logic": "6.65.1"
   },
   "devDependencies": {
     "@babel/core": "8.1.0",
